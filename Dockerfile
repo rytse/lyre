@@ -7,5 +7,4 @@ RUN pip install --trusted-host pypi.python.org -r Requirements.txt
 
 EXPOSE 80
 
-CMD ["python", "back/backend.py"]
-CMD ["python", "front/frontend.py"]
+CMD ["python", "app.py"]
