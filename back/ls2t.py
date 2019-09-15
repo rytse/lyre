@@ -25,9 +25,13 @@ with io.open('../data/output.raw', 'rb') as media:
     generator = [media.read()]
 
 rresp = rev.start(generator)
-
 for response in rresp:
-    print(response)
-
+    rdict = json.loads(response)
+    if rdict['type'] == 'final':
+        msg = ''
+        for el in rdict['elements']:
+            msg += el['value']
+        if msg.strip():
+            print(msg.strip())
 
 rev.end()
