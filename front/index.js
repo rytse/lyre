@@ -19,6 +19,30 @@ class AlertStack extends React.Component {
   }
 }
 
+class SwitchForm extends React.Component {
+  render() {
+    return (<div id = 'switchform'> switchboard form </div>);
+  }
+}
+
+class AlertPusher extends React.Component {
+  render() {
+    return (<div id = 'alert-pusher'> alert pusher </div>);
+  }
+}
+
+class TranscriptDetailed extends React.Component {
+  render() {
+    return (<div id = 'transcript-detail'> detailed transcript </div>);
+  }
+}
+
+class AlertEditor extends React.Component {
+  render() {
+    return (<div id = 'alert-editor'> alert editor </div>);
+  }
+}
+
 function Header(props) {
   return (<div id='header'> <h1> Command Center {props.page} </h1>
   <button disabled={props.page=='Home'} onClick={props.onClick} value='Home'> Home </button>
@@ -51,6 +75,7 @@ class Switchboard extends React.Component {
 
   render() {return(<div>
     <Header page='Switchboard' onClick={this.handleNav}/>
+    <SwitchForm />
     </div>
   );}
 }
@@ -63,6 +88,9 @@ class Validation extends React.Component {
 
   render() {return(<div>
     <Header page='Validation' onClick={this.handleNav}/>
+    <AlertPusher />
+    <TranscriptDetailed />
+    <AlertEditor />
     </div>
   );}
 }
@@ -108,12 +136,7 @@ class App extends React.Component {
         return (<Home handleNav={this.switchPage}/>);
         break;
     }
-    return (<div>
-    <Header page={this.state.currentPage} onClick={this.switchPage}/>
-    <AlertStack />
-    <TranscriptBox />
-    </div>
-  ); }
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
