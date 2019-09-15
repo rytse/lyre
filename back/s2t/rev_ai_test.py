@@ -102,11 +102,12 @@ with MicrophoneStream(rate, chunk) as stream:
         for response in response_gen:
             response_dict=json.loads(response)
             if response_dict['type']=='final':
+                msg=""
                 for i in response_dict["elements"]:
-                    print(i['value'],end=' ')
-                print()
-                # print(response)
-            # print(response)
+                    msg+=i['value']
+                if(msg.strip()):
+                    print(msg.strip())
+
 
     except KeyboardInterrupt:
         # Ends the websocket connection.
