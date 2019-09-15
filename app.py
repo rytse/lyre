@@ -6,28 +6,21 @@ from flask import Flask, escape, request, render_template, json, jsonify
 from flask_cors import CORS
 import random
 
+# Flask setup
 app = Flask(__name__)
-CORS(app)
-
-
+CORS(app)   # allow React to read this while running in 1234, not 5000
 
 # Read in all the location data
 tinit = time.time()
 ldata = pd.read_csv('data/locs/all.csv')
 
-#@app.route('/')
-#def mainpage():
-#    return render_template('flask_test.html')
-
 @app.route('/update/', methods=['GET'])
 def hello():
     t = time.time() - tinit
-    #print(t)
-
     dslice = ldata.loc[ldata.t < t]
-
     data = {}
 
+    # Add location data (latest known location, regardless of last update)
     for dep in ['fire', 'police', 'guard']:
         data[f'{dep}_locs'] = {}
         for rep in range(5):
@@ -40,14 +33,10 @@ def hello():
     data['disasters'] = [];
     data['dispatches'] = [];
 
-
     response = app.response_class(response=json.dumps(data),
                             status=200, mimetype='application/json');
 
-    #response = app.response_class(response=json.dumps(f'Hello! {random.random()}'),
-    #                        status=200, mimetype='application/json');
-
-    return response;
+    return response
 
 if __name__ == '__main__':
     app.run(use_reloader=True, debug=True)

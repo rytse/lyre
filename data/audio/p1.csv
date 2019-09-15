@@ -1,19 +1,16 @@
 0,
 5,
 10,
-15,Oh my gosh, show blah hot.
-20,Earl.
-25,Uh huh.
+15,This is arbitrary text that shouldn't actually get coordinated or processed.
+20,
+25,
 30,
-35,All the whole.
-40,Function. Huh?
-45,
-50,To talk Turkey, Horsham.Phone.
-55,Oh sure.
+35,Some more arbitrary text. Most of this will be arbitrary text, but it shouldn't matter because we should be able to pick out the correct addresses.
+40,There should be some empty filler to.
+45,There's a fire at the McDonald's.
+50,
+55,There's an injured person at the McDonald's.
 60,
-65,Home portion or something.
+65,I need a helicopter to the McDonald's.
 70,
-75,
-80,I'll talk to her.
-85,
-90,I'm 34.
+75,And more filler text at the end that is unnecessary. That should be filtered out.

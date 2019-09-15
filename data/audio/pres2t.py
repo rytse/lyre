@@ -17,6 +17,7 @@ access_token = '021RBqj26AzVFWw7gkJ_mYOTBxdQoDikYFCDdyGFznouU9tioCAwqRgQOW2-iihk
 # This includes the content type, layout, rate, format, and # of channels
 #config = MediaConfig("audio/x-raw", "interleaved", 16000, "S16LE", 1)
 config = MediaConfig("audio/x-raw", "interleaved", 44100, "S16LE", 1)
+#config = MediaConfig("audio/x-raw", "stereo", 44100, "S16LE", 2)
 
 # Create client with your access token and media configuration
 streamclient = RevAiStreamingClient(access_token, config)
