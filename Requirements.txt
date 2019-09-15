@@ -1,6 +1,5 @@
-ibm-watson
+flask
 requests
+PyAudio
 rev-ai
-aiortc
-aiohttp
-
+ibm-watson
