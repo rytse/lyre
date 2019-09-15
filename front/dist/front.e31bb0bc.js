@@ -30687,10 +30687,16 @@ var AlertStack =
 function (_React$Component3) {
   _inherits(AlertStack, _React$Component3);
 
-  function AlertStack() {
+  function AlertStack(props) {
+    var _this;
+
     _classCallCheck(this, AlertStack);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AlertStack).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AlertStack).call(this, props));
+    _this.state = {
+      stack: [0]
+    };
+    return _this;
   }
 
   _createClass(AlertStack, [{
@@ -30698,7 +30704,7 @@ function (_React$Component3) {
     value: function render() {
       return _react.default.createElement("div", {
         id: "alert-stack"
-      }, " alerts ");
+      }, " alerts ", this.state.stack, " ");
     }
   }]);
 
@@ -30825,13 +30831,13 @@ function (_React$Component8) {
   _inherits(Home, _React$Component8);
 
   function Home(props) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, Home);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
-    _this.handleNav = props.handleNav;
-    return _this;
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+    _this2.handleNav = props.handleNav;
+    return _this2;
   }
 
   _createClass(Home, [{
@@ -30853,13 +30859,13 @@ function (_React$Component9) {
   _inherits(Switchboard, _React$Component9);
 
   function Switchboard(props) {
-    var _this2;
+    var _this3;
 
     _classCallCheck(this, Switchboard);
 
-    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(Switchboard).call(this, props));
-    _this2.handleNav = props.handleNav;
-    return _this2;
+    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(Switchboard).call(this, props));
+    _this3.handleNav = props.handleNav;
+    return _this3;
   }
 
   _createClass(Switchboard, [{
@@ -30881,13 +30887,13 @@ function (_React$Component10) {
   _inherits(Validation, _React$Component10);
 
   function Validation(props) {
-    var _this3;
+    var _this4;
 
     _classCallCheck(this, Validation);
 
-    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(Validation).call(this, props));
-    _this3.handleNav = props.handleNav;
-    return _this3;
+    _this4 = _possibleConstructorReturn(this, _getPrototypeOf(Validation).call(this, props));
+    _this4.handleNav = props.handleNav;
+    return _this4;
   }
 
   _createClass(Validation, [{
@@ -30909,13 +30915,13 @@ function (_React$Component11) {
   _inherits(Analytics, _React$Component11);
 
   function Analytics(props) {
-    var _this4;
+    var _this5;
 
     _classCallCheck(this, Analytics);
 
-    _this4 = _possibleConstructorReturn(this, _getPrototypeOf(Analytics).call(this, props));
-    _this4.handleNav = props.handleNav;
-    return _this4;
+    _this5 = _possibleConstructorReturn(this, _getPrototypeOf(Analytics).call(this, props));
+    _this5.handleNav = props.handleNav;
+    return _this5;
   }
 
   _createClass(Analytics, [{
@@ -30937,16 +30943,17 @@ function (_React$Component12) {
   _inherits(App, _React$Component12);
 
   function App(props) {
-    var _this5;
+    var _this6;
 
     _classCallCheck(this, App);
 
-    _this5 = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this5.state = {
-      currentPage: 'Home'
+    _this6 = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this6.state = {
+      currentPage: 'Home',
+      test: 0
     };
-    _this5.switchPage = _this5.switchPage.bind(_assertThisInitialized(_this5));
-    return _this5;
+    _this6.switchPage = _this6.switchPage.bind(_assertThisInitialized(_this6));
+    return _this6;
   }
 
   _createClass(App, [{
@@ -30956,6 +30963,23 @@ function (_React$Component12) {
         currentPage: e.target.value
       });
     }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this7 = this;
+
+      this.timerID = setInterval(function () {
+        return _this7.updateTest();
+      }, 1000);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  }, {
+    key: "updateTest",
+    value: function updateTest() {}
   }, {
     key: "render",
     value: function render() {
@@ -31025,7 +31049,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49206" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51758" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

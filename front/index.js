@@ -14,8 +14,13 @@ class TranscriptBox extends React.Component {
 }
 
 class AlertStack extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {stack: [0]}
+  }
+
   render() {
-    return (<div id = 'alert-stack'> alerts </div>);
+    return (<div id = 'alert-stack'> alerts {this.state.stack} </div>);
   }
 }
 
@@ -110,12 +115,23 @@ class Analytics extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentPage: 'Home'};
+    this.state = {currentPage: 'Home', test: 0};
     this.switchPage = this.switchPage.bind(this);
   }
 
   switchPage(e) {
     this.setState({currentPage: e.target.value});
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.updateTest(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  updateTest() {
   }
 
   render() {
