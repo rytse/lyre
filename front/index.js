@@ -3,51 +3,38 @@ import ReactDOM from "react-dom";
 
 var xhr = new XMLHttpRequest();
 
-class Map extends React.Component {
-  render() {
-    return (<div id = 'map-pane'> map goes here! </div>);
-  }
+function Map(props) {
+  return (<div id = 'map-pane'> map goes here! </div>);
 }
 
-class TranscriptBox extends React.Component {
-  render() {
-    return (<div id = 'transcript-box'> transcript </div>);
-  }
+function TranscriptBox(props) {
+  return (<div id = 'transcript-box'> transcript </div>);
 }
 
-class AlertStack extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {stack: [0], serverData: props.serverData};
-  }
-
-  render() {
-    return (<div id = 'alert-stack'> alerts {this.state.stack} {this.state.serverData} </div>);
-  }
+function Alert(props) {
+  return (<div id='alert'> {props.title} <button> Action </button> </div> );
 }
 
-class SwitchForm extends React.Component {
-  render() {
-    return (<div id = 'switchform'> switchboard form </div>);
-  }
+function AlertStack(props) {
+  // console.log(props.serverData);
+  const items = props.serverData.map((e) => <li key={e}> <Alert title={e}/> </li>);
+  return (<div id = 'alert-stack'> <ul> {items} </ul> </div>);
 }
 
-class AlertPusher extends React.Component {
-  render() {
-    return (<div id = 'alert-pusher'> alert pusher </div>);
-  }
+function SwitchForm(props) {
+  return (<div id = 'switchform'> switchboard form </div>);
 }
 
-class TranscriptDetailed extends React.Component {
-  render() {
-    return (<div id = 'transcript-detail'> detailed transcript </div>);
-  }
+function AlertPusher(props) {
+  return (<div id = 'alert-pusher'> alert pusher </div>);
 }
 
-class AlertEditor extends React.Component {
-  render() {
-    return (<div id = 'alert-editor'> alert editor </div>);
-  }
+function TranscriptDetailed(props) {
+  return (<div id = 'transcript-detail'> detailed transcript </div>);
+}
+
+function AlertEditor(props) {
+  return (<div id = 'alert-editor'> alert editor </div>);
 }
 
 function Header(props) {
@@ -59,67 +46,48 @@ function Header(props) {
   </div>);
 }
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleNav = props.handleNav;
-    this.state = {serverData: props.serverData};
-  }
-
-  render() {return (<div>
-    <Header page='Home' onClick={this.handleNav}/>
+function Home(props) {
+  // console.log(props.serverData);
+  return (<div>
+    <Header page='Home' onClick={props.handleNav}/>
     <Map />
-    <AlertStack serverData={this.state.serverData} />
+    <AlertStack serverData={props.serverData['alerts']} />
     <TranscriptBox />
     </div>
-  );}
+  );
 }
 
-class Switchboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleNav = props.handleNav;
-  }
-
-  render() {return(<div>
-    <Header page='Switchboard' onClick={this.handleNav}/>
+function Switchboard(props) {
+  return(<div>
+    <Header page='Switchboard' onClick={props.handleNav} serverData={props.serverData}/>
     <SwitchForm />
     </div>
-  );}
+  );
 }
 
-class Validation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleNav = props.handleNav;
-  }
-
-  render() {return(<div>
-    <Header page='Validation' onClick={this.handleNav}/>
+function Validation(props) {
+  return(<div>
+    <Header page='Validation' onClick={props.handleNav} serverData={props.serverData}/>
     <AlertPusher />
     <TranscriptDetailed />
     <AlertEditor />
     </div>
-  );}
+  );
 }
 
-class Analytics extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleNav = props.handleNav;
-  }
-
-  render() {return(<div>
-    <Header page='Analytics' onClick={this.handleNav}/>
+function Analytics(props) {
+  return(<div>
+    <Header page='Analytics' onClick={props.handleNav} serverData={props.serverData}/>
     </div>
-  );}
+  );
 }
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentPage: 'Home', test: 0, alertNum: 0};
+    this.state = {currentPage: 'Home', test: 0, serverData: {'alerts': ['alert1', 'alert2'], 'disasters':['disaster1']}};
     this.switchPage = this.switchPage.bind(this);
+    this.setState = this.setState.bind(this);
   }
 
   switchPage(e) {
@@ -135,32 +103,38 @@ class App extends React.Component {
   }
 
   updateTest() {
+    var setState = this.setState;
+    var sData = this.state.serverData;
     fetch('http://localhost:5000/update/')
       .then(function(response) {
         return response.json();
       })
       .then(function(myJson) {
-        console.log(myJson);
+        // console.log(myJson);
+        // console.log(typeof(setState));
+        setState({serverData: Object.assign({}, myJson)});
       })
       .catch(function() {console.log("Error")});
+      // console.log(this.state.serverData);
    }
 
   render() {
+    // console.log(this.state.serverData);
     switch(this.state.currentPage) {
       case 'Home':
-        return (<Home handleNav={this.switchPage} serverData={this.state.alertNum}/>);
+        return (<Home handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
       case 'Switchboard':
-        return(<Switchboard handleNav={this.switchPage}/>);
+        return(<Switchboard handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
       case 'Validation':
-        return(<Validation handleNav={this.switchPage}/>);
+        return(<Validation handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
       case 'Analytics':
-        return(<Analytics handleNav={this.switchPage}/>);
+        return(<Analytics handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
       default:
-        return (<Home handleNav={this.switchPage}/>);
+        return (<Home handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
     }
   }

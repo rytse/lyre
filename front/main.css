@@ -24,6 +24,19 @@ h1 {
   line-height: 90%;
 }
 
+div {
+  padding-left: 1%;
+  padding-top: 2%;
+}
+
+button {
+
+}
+
+ul {
+  list-style-type: none;
+}
+
 #root {
   background-color: #fdfdfd;
   font-family: 'Fira Sans', sans-serif;
@@ -35,7 +48,7 @@ h1 {
 }
 
 #switchform {
-  background-color: #adffff;
+  background-color: #fdfdfd;
   position: fixed;
   top: 10%;
   left: 0;
@@ -44,7 +57,7 @@ h1 {
 }
 
 #alert-pusher{
-  background-color: #adadad;
+  background-color: #f0f0f0;
   position: fixed;
   top: 10%;
   left: 0;
@@ -64,14 +77,14 @@ h1 {
 #alert-editor {
   background-color: #cdcdcd;
   position: fixed;
-  left: 30%;
+  right: 0;
   bottom: 0;
   height: 10%;
   width: 70%;
 }
 
 #map-pane {
-  background-color: #adffff;
+  background-color: #fafafa;
   position: fixed;
   top: 10%;
   left: 0;
@@ -104,6 +117,8 @@ h1 {
   left: 0;
   height: 10%;
   width: 100%;
+  margin: 0;
+  padding-top: 0;
 }
 
 #navbar {
