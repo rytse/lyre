@@ -1,3 +1,6 @@
 ibm-watson
 requests
+rev-ai
+aiortc
+aiohttp
 
