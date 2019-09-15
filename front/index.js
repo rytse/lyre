@@ -136,9 +136,15 @@ class App extends React.Component {
   }
 
   updateTest() {
-    xhr.open("GET", "http://localhost:5000/update/", true);
-    xhr.send();
-    xhr.onreadystatechange = () => this.handleGetReq();
+    fetch('http://localhost:5000/update/')
+          .then(function(response) {
+                  return response.json();
+
+          })
+          .then(function(myJson) {
+                  console.log(JSON.stringify(myJson));
+
+          });
    }
 
   render() {

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "parcel": "^1.12.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "request": "^2.88.0"
