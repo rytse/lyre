@@ -18,11 +18,11 @@ class TranscriptBox extends React.Component {
 class AlertStack extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {stack: [0], serverData: props.serverData}
+    this.state = {stack: [0], serverData: props.serverData};
   }
 
   render() {
-    return (<div id = 'alert-stack'> alerts {this.state.stack}, {this.state.serverData} </div>);
+    return (<div id = 'alert-stack'> alerts {this.state.stack} {this.state.serverData} </div>);
   }
 }
 
@@ -120,6 +120,7 @@ class App extends React.Component {
     super(props);
     this.state = {currentPage: 'Home', test: 0, alertNum: 0};
     this.switchPage = this.switchPage.bind(this);
+    this.handleGetReq = this.handleGetReq.bind(this);
   }
 
   switchPage(e) {
@@ -137,8 +138,7 @@ class App extends React.Component {
   updateTest() {
     xhr.open("GET", "http://localhost:5000/update/", true);
     xhr.send();
-    xhr.onreadystatechange = handleGetReq();
-
+    xhr.onreadystatechange = this.handleGetReq();
    }
 
   render() {
@@ -165,7 +165,7 @@ class App extends React.Component {
     if (xhr.readyState == 4 && xhr.status == 200) {
         this.setState({alertNum: xhr.response});
     }
-}
+  }
 }
 
 
