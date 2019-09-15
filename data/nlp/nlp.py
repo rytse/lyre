@@ -47,7 +47,7 @@ def check_loc(msg, lat, lon):
 
 
 # Text parsing constants
-EMERGENCIES_LUT = ['fire', 'earthquake', 'flood', 'trapped', 'stuck', 'injured']
+EMERGENCIES_LUT = ['fire', 'earthquake', 'flood', 'trapped', 'stuck', 'injured', 'drowning', 'drown']
 DISPATCH_LUT = ['helicopter', 'helo', 'backup', 'medivac']
 FEATURES = Features(keywords=KeywordsOptions())
 
