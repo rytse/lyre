@@ -39,6 +39,7 @@ def check_loc(msg, lat, lon):
         if dist < 5:
             return addr
         else:
+            print('TOO FAR!!!')
             return None
 
     else:
