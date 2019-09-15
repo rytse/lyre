@@ -25,6 +25,24 @@ class SwitchForm extends React.Component {
   }
 }
 
+class AlertPusher extends React.Component {
+  render() {
+    return (<div id = 'alert-pusher'> alert pusher </div>);
+  }
+}
+
+class TranscriptDetailed extends React.Component {
+  render() {
+    return (<div id = 'transcript-detail'> detailed transcript </div>);
+  }
+}
+
+class AlertEditor extends React.Component {
+  render() {
+    return (<div id = 'alert-editor'> alert editor </div>);
+  }
+}
+
 function Header(props) {
   return (<div id='header'> <h1> Command Center {props.page} </h1>
   <button disabled={props.page=='Home'} onClick={props.onClick} value='Home'> Home </button>
@@ -70,6 +88,9 @@ class Validation extends React.Component {
 
   render() {return(<div>
     <Header page='Validation' onClick={this.handleNav}/>
+    <AlertPusher />
+    <TranscriptDetailed />
+    <AlertEditor />
     </div>
   );}
 }

@@ -30728,6 +30728,75 @@ function (_React$Component4) {
   return SwitchForm;
 }(_react.default.Component);
 
+var AlertPusher =
+/*#__PURE__*/
+function (_React$Component5) {
+  _inherits(AlertPusher, _React$Component5);
+
+  function AlertPusher() {
+    _classCallCheck(this, AlertPusher);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AlertPusher).apply(this, arguments));
+  }
+
+  _createClass(AlertPusher, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        id: "alert-pusher"
+      }, " alert pusher ");
+    }
+  }]);
+
+  return AlertPusher;
+}(_react.default.Component);
+
+var TranscriptDetailed =
+/*#__PURE__*/
+function (_React$Component6) {
+  _inherits(TranscriptDetailed, _React$Component6);
+
+  function TranscriptDetailed() {
+    _classCallCheck(this, TranscriptDetailed);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TranscriptDetailed).apply(this, arguments));
+  }
+
+  _createClass(TranscriptDetailed, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        id: "transcript-detail"
+      }, " detailed transcript ");
+    }
+  }]);
+
+  return TranscriptDetailed;
+}(_react.default.Component);
+
+var AlertEditor =
+/*#__PURE__*/
+function (_React$Component7) {
+  _inherits(AlertEditor, _React$Component7);
+
+  function AlertEditor() {
+    _classCallCheck(this, AlertEditor);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AlertEditor).apply(this, arguments));
+  }
+
+  _createClass(AlertEditor, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        id: "alert-editor"
+      }, " alert editor ");
+    }
+  }]);
+
+  return AlertEditor;
+}(_react.default.Component);
+
 function Header(props) {
   return _react.default.createElement("div", {
     id: "header"
@@ -30752,8 +30821,8 @@ function Header(props) {
 
 var Home =
 /*#__PURE__*/
-function (_React$Component5) {
-  _inherits(Home, _React$Component5);
+function (_React$Component8) {
+  _inherits(Home, _React$Component8);
 
   function Home(props) {
     var _this;
@@ -30780,8 +30849,8 @@ function (_React$Component5) {
 
 var Switchboard =
 /*#__PURE__*/
-function (_React$Component6) {
-  _inherits(Switchboard, _React$Component6);
+function (_React$Component9) {
+  _inherits(Switchboard, _React$Component9);
 
   function Switchboard(props) {
     var _this2;
@@ -30808,8 +30877,8 @@ function (_React$Component6) {
 
 var Validation =
 /*#__PURE__*/
-function (_React$Component7) {
-  _inherits(Validation, _React$Component7);
+function (_React$Component10) {
+  _inherits(Validation, _React$Component10);
 
   function Validation(props) {
     var _this3;
@@ -30827,7 +30896,7 @@ function (_React$Component7) {
       return _react.default.createElement("div", null, _react.default.createElement(Header, {
         page: "Validation",
         onClick: this.handleNav
-      }));
+      }), _react.default.createElement(AlertPusher, null), _react.default.createElement(TranscriptDetailed, null), _react.default.createElement(AlertEditor, null));
     }
   }]);
 
@@ -30836,8 +30905,8 @@ function (_React$Component7) {
 
 var Analytics =
 /*#__PURE__*/
-function (_React$Component8) {
-  _inherits(Analytics, _React$Component8);
+function (_React$Component11) {
+  _inherits(Analytics, _React$Component11);
 
   function Analytics(props) {
     var _this4;
@@ -30864,8 +30933,8 @@ function (_React$Component8) {
 
 var App =
 /*#__PURE__*/
-function (_React$Component9) {
-  _inherits(App, _React$Component9);
+function (_React$Component12) {
+  _inherits(App, _React$Component12);
 
   function App(props) {
     var _this5;
@@ -30956,7 +31025,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64124" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49206" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

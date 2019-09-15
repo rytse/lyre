@@ -43,6 +43,33 @@ h1 {
   height: 90%;
 }
 
+#alert-pusher{
+  background-color: #adadad;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 30%;
+  height: 90%;
+}
+
+#transcript-detail {
+  background-color: #adffff;
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 70%;
+  height: 80%;
+}
+
+#alert-editor {
+  background-color: #cdcdcd;
+  position: fixed;
+  left: 30%;
+  bottom: 0;
+  height: 10%;
+  width: 70%;
+}
+
 #map-pane {
   background-color: #adffff;
   position: fixed;
