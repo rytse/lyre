@@ -39,7 +39,7 @@ def hello():
             data[f'{dep}_locs'][f'u{rep}'] = [l_dslice.tail(1)[f'{dep}_{rep}_x'].iloc[0], l_dslice.tail(1)[f'{dep}_{rep}_y'].iloc[0]]
 
     # Add alert data
-    data['alerts'] = []
+    data['alerts'] = list(a_dslice['Alert'])
     data['disasters'] = list(a_dslice['Emergency'])
     data['dispatches'] = list(a_dslice['Dispatch'])
 

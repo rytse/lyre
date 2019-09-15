@@ -1,7 +1,7 @@
 import pandas as pd
 import nlp
 
-df = pd.DataFrame(columns = ['Time', 'Emergency', 'Dispatch', 'Address'])
+df = pd.DataFrame(columns = ['Time', 'Emergency', 'Dispatch', 'Address', 'Alert'])
 
 #for dep in ['f', 'p', 'g']:
 for dep in ['p']:
@@ -23,7 +23,8 @@ for dep in ['p']:
                         df = df.append({'Time': int(sp[0]),
                                         'Emergency': a,
                                         'Dispatch': b,
-                                        'Address': c},
+                                        'Address': c,
+                                        'Alert': sp[1]},
                                         ignore_index=True)
 
 df = df.sort_values('Time')
