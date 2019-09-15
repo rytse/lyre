@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        var i=0;
+        function request_data() {
+            xhr.open("GET", "http://localhost:5000/update/", true);
+            xhr.send();
+            xhr.onreadystatechange = processRequest;
+        }
+        function processRequest(e) {
+            if (xhr.readyState == 4) {
+                i++;
+                var response = xhr.response;
+                document.getElementById("dataspot").innerHTML=response;
+                document.getElementById("dataspot2").innerHTML=i;
+                request_data();
+            }
+        }
+        request_data();
+    </script>
+</head>
+<body>
+<p>Data: </p>
+<div id="dataspot">
+
+</div>
+<div id="dataspot2">
+
+</div>
+</body>
+</html>
