@@ -138,7 +138,7 @@ class App extends React.Component {
   updateTest() {
     xhr.open("GET", "http://localhost:5000/update/", true);
     xhr.send();
-    xhr.onreadystatechange = this.handleGetReq();
+    xhr.onreadystatechange = () => this.handleGetReq();
    }
 
   render() {
