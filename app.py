@@ -16,6 +16,9 @@ tinit = time.time()
 ldata = pd.read_csv('data/locs/all.csv')
 adata = pd.read_csv('data/nlp/all.csv')
 
+def clean_list(L):
+    return [rep for rep in L if str(rep) != 'nan']
+
 @app.route('/update/', methods=['GET'])
 def hello():
     #try:
@@ -39,9 +42,9 @@ def hello():
             data[f'{dep}_locs'][f'u{rep}'] = [l_dslice.tail(1)[f'{dep}_{rep}_x'].iloc[0], l_dslice.tail(1)[f'{dep}_{rep}_y'].iloc[0]]
 
     # Add alert data
-    data['alerts'] = list(a_dslice['Alert'])
-    data['disasters'] = list(a_dslice['Emergency'])
-    data['dispatches'] = list(a_dslice['Dispatch'])
+    data['alerts'] = clean_list(list(a_dslice['Alert']))
+    data['disasters'] = clean_list(list(a_dslice['Emergency']))
+    data['dispatches'] = clean_list(list(a_dslice['Dispatch']))
 
     print(data)
     print('\n\n\n')
