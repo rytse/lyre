@@ -55,21 +55,21 @@ img {
   z-index: 99;
 }
 
-#fu1 {}
-#fu2 {}
-#fu3 {}
-#fu4 {}
-#fu5 {}
-#pu1 {}
-#pu2 {}
-#pu3 {}
-#pu4 {}
-#pu5 {}
-#gu1 {}
-#gu2 {}
-#gu3 {}
-#gu4 {}
-#gu5 {}
+#fu1 {left: 25%; bottom: 40%}
+#fu2 {left: 37%; bottom: 5%}
+#fu3 {right: 25%; bottom: 36%}
+#fu4 {left: 50%; top: 42%}
+#fu5 {right: 22%; top: 30%}
+#pu1 {left: 51%; top: 1%}
+#pu2 {right: 5%; top: 46%}
+#pu3 {right: 1%; bottom: 48%}
+#pu4 {right: 48%; bottom: 50%}
+#pu5 {top: 24%; bottom: 1%}
+#gu1 {right: 27%; bottom: 3%}
+#gu2 {right: 24%; top: 20%}
+#gu3 {left: 1%; top: 46%}
+#gu4 {right: 18%; bottom: 32%}
+#gu5 {left: 1%; top: 1%}
 #d1 {}
 #d2 {}
 #d3 {}
