@@ -26,8 +26,8 @@ def clean_list(L):
 # @app.route('/')
 # def test():
 #     return render_template('test.html')
-
-#@app.route('/update/', methods=['GET'])
+xcript=[]
+@app.route('/update/', methods=['GET'])
 def hello():
     #try:
     #    adata = adata.loc[adata['Time'] >= t]
@@ -55,7 +55,9 @@ def hello():
     data['dispatches'] = clean_list(list(a_dslice['Dispatch']))
     data['latlon'] = clean_list(list(a_dslice['Address']))
 
-    data['transcript'] = []
+    global xcript
+    data['transcript'] = xcript#[]
+
 
     ptf_p = ptf.tell()
     rep = ptf.readline()
@@ -80,7 +82,7 @@ def hello():
         gtf_p = gtf.tell()
         rep = gtf.readline()
     gtf.seek(gtf_p)
-
+    xcript = data['transcript']
 
     print(data)
     print('\n\n\n')
