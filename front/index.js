@@ -4,11 +4,11 @@ import ReactDOM from "react-dom";
 var xhr = new XMLHttpRequest();
 
 function Map(props) {
-  return (<div id = 'map-pane'> map goes here! </div>);
+  return (<div id = 'map-pane'> map goes here </div>);
 }
 
 function TranscriptBox(props) {
-  return (<div id = 'transcript-box'> transcript </div>);
+  return (<div id = 'transcript-box'> <h2> Transcript </h2> </div>);
 }
 
 function Alert(props) {
@@ -18,7 +18,7 @@ function Alert(props) {
 function AlertStack(props) {
   // console.log(props.serverData);
   const items = props.serverData.map((e) => <li key={e}> <Alert title={e}/> </li>);
-  return (<div id = 'alert-stack'> <ul> {items} </ul> </div>);
+  return (<div id = 'alert-stack'> <h2> Alerts </h2> <ul> {items} </ul> </div>);
 }
 
 function SwitchForm(props) {
