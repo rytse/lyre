@@ -49,13 +49,14 @@ def hello():
     data['alerts'] = clean_list(list(a_dslice['Alert']))
     data['disasters'] = clean_list(list(a_dslice['Emergency']))
     data['dispatches'] = clean_list(list(a_dslice['Dispatch']))
+    data['latlon'] = clean_list(list(a_dslice['Address']))
 
     data['transcript'] = []
 
     ptf_p = ptf.tell()
     rep = ptf.readline()
     while len(rep.split(',')[0]) > 0 and rep.split(',')[0].isnumeric() and int(rep.split(',')[0]) < t:
-        data['transcript'].append(''.join(rep.split(',')[1:]))
+        data['transcript'].append(f'{t}'.join(rep.split(',')[1:]))
         ptf_p = ptf.tell()
         rep = ptf.readline()
     ptf.seek(ptf_p)
@@ -63,7 +64,7 @@ def hello():
     ftf_p = ftf.tell()
     rep = ftf.readline()
     while len(rep.split(',')[0]) > 0 and rep.split(',')[0].isnumeric() and int(rep.split(',')[0]) < t:
-        data['transcript'].append(''.join(rep.split(',')[1:]))
+        data['transcript'].append(f'{t}'.join(rep.split(',')[1:]))
         ftf_p = ftf.tell()
         rep = ftf.readline()
     ftf.seek(ftf_p)
@@ -71,7 +72,7 @@ def hello():
     gtf_p = gtf.tell()
     rep = gtf.readline()
     while len(rep.split(',')[0]) > 0 and rep.split(',')[0].isnumeric() and int(rep.split(',')[0]) < t:
-        data['transcript'].append(''.join(rep.split(',')[1:]))
+        data['transcript'].append(f'{t}'.join(rep.split(',')[1:]))
         gtf_p = gtf.tell()
         rep = gtf.readline()
     gtf.seek(gtf_p)

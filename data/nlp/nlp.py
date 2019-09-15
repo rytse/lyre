@@ -37,7 +37,13 @@ def check_loc(msg, lat, lon):
         dist = data['rows'][0]['elements'][0]['distance']['value'] / 1e3    # distance in km
 
         if dist < 5:
-            return addr
+            geo_url = 'https://maps.googleapis.com/maps/api/geocode/json'
+            r = requests.get(url=geo_url, params={'address': addr, 'key': 'AIzaSyAD0_7dEG0LlC0JNuHn5QHIeW3CNOFdbmY'})
+            data = r.json()
+            rep = [data['results'][0]['geometry']['location']['lat'],data['results'][0]['geometry']['location']['lng']]
+
+            return f'{rep[0]}~{rep[1]}'
+
         else:
             print('TOO FAR!!!')
             return None

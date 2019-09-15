@@ -1,6 +1,5 @@
 ,Time,Emergency,Dispatch,Address,Alert
-0,15,,backup,"7739 Tuckerman Ln, Potomac, MD 20854, USA", 
-1,20,drowning,,"7825 Tuckerman Ln, Potomac, MD 20854, USA",o
-3,25,fire,,"7955 Tuckerman Ln, Rockville, MD 20854, USA",v
-4,40,,backup,,e
-2,45,,backup,"1087 Seven Locks Rd, Rockville, MD 20854, USA", 
+0,15,,backup,39.0404304~-77.1554929, 
+1,20,drowning,,39.0406944~-77.1558823,o
+2,25,fire,,39.0413309~-77.1574207,v
+3,40,,backup,,e
