@@ -110,11 +110,12 @@ class App extends React.Component {
         return response.json();
       })
       .then(function(myJson) {
-        // console.log(myJson);
+        console.log("asdf");
+        console.log(myJson);
         // console.log(typeof(setState));
         setState({serverData: Object.assign({}, myJson)});
       })
-      .catch(function() {console.log("Error")});
+      // .catch(function() {console.log("Error")});
       // console.log(this.state.serverData);
    }
 

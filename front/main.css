@@ -85,6 +85,10 @@ ul {
 
 #map-pane {
   background-color: #fafafa;
+  background-image: url('http://www.sclance.com/pngs/png-grid/png_grid_1062657.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
   position: fixed;
   top: 10%;
   left: 0;
