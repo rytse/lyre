@@ -34,6 +34,15 @@ h1 {
   height: 100%;
 }
 
+#switchform {
+  background-color: #adffff;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  height: 90%;
+}
+
 #map-pane {
   background-color: #adffff;
   position: fixed;
