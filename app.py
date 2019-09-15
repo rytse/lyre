@@ -11,27 +11,40 @@ app = Flask(__name__)
 CORS(app)   # allow React to read this while running in 1234, not 5000
 
 # Read in all the location data
+tprev = time.time()
 tinit = time.time()
 ldata = pd.read_csv('data/locs/all.csv')
+adata = pd.read_csv('data/nlp/all.csv')
 
 @app.route('/update/', methods=['GET'])
 def hello():
+    #try:
+    #    adata = adata.loc[adata['Time'] >= t]
+    #except:
+    #    pass
+
     t = time.time() - tinit
-    dslice = ldata.loc[ldata.t < t]
+    l_dslice = ldata.loc[ldata.t < t]
+
+    a_dslice = adata.loc[adata['Time'] < t]
+
+    tprev = time.time()
+
     data = {}
 
     # Add location data (latest known location, regardless of last update)
     for dep in ['fire', 'police', 'guard']:
         data[f'{dep}_locs'] = {}
         for rep in range(5):
-            data[f'{dep}_locs'][f'u{rep}'] = [dslice.tail(1)[f'{dep}_{rep}_x'].iloc[0], dslice.tail(1)[f'{dep}_{rep}_y'].iloc[0]]
+            data[f'{dep}_locs'][f'u{rep}'] = [l_dslice.tail(1)[f'{dep}_{rep}_x'].iloc[0], l_dslice.tail(1)[f'{dep}_{rep}_y'].iloc[0]]
+
+    # Add alert data
+    data['alerts'] = []
+    data['disasters'] = list(a_dslice['Emergency'])
+    data['dispatches'] = list(a_dslice['Dispatch'])
 
     print(data)
     print('\n\n\n')
-
-    data['alerts'] = [];
-    data['disasters'] = [];
-    data['dispatches'] = [];
 
     response = app.response_class(response=json.dumps(data),
                             status=200, mimetype='application/json');
