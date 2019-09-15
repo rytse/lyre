@@ -23,7 +23,11 @@ gtf = open('data/audio/guard.csv', 'r')
 def clean_list(L):
     return [rep for rep in L if str(rep) != 'nan']
 
-@app.route('/update/', methods=['GET'])
+# @app.route('/')
+# def test():
+#     return render_template('test.html')
+
+#@app.route('/update/', methods=['GET'])
 def hello():
     #try:
     #    adata = adata.loc[adata['Time'] >= t]

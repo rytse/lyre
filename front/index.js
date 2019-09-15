@@ -40,7 +40,13 @@ function AlertStack(props) {
 }
 
 function SwitchForm(props) {
-  return (<div id = 'switchform'> switchboard form </div>);
+  return (
+      <div><div id="switchboard">
+    <canvas id="connection_disp" width="350" height="250"></canvas><br />
+    <button type="button" onclick="polfire()">Police -- Fire</button><br />
+    <button type="button" onclick="polng()">Police -- Natl Guard</button><br />
+    <button type="button"onclick="fireng()">Fire -- Natl Guard</button>
+  <script src="http://localhost:5000/static/switchboard.js"></script> </div></div>);
 }
 
 function AlertPusher(props) {
@@ -56,7 +62,7 @@ function AlertEditor(props) {
 }
 
 function Header(props) {
-  return (<div id='header'> <h1> Command Center {props.page} </h1>
+  return (<div id='header'> <h1> Lyre Command Center {props.page} </h1>
   <button disabled={props.page=='Home'} onClick={props.onClick} value='Home'> Home </button>
   <button disabled={props.page=='Switchboard'} onClick={props.onClick} value='Switchboard'> Switchboard </button>
   <button disabled={props.page=='Validation'} onClick={props.onClick} value='Validation'> Validation </button>
