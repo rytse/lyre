@@ -48,7 +48,7 @@ function AlertPusher(props) {
 }
 
 function TranscriptDetailed(props) {
-  return (<div id = 'transcript-detail'> detailed transcript </div>);
+  return (<div id = 'transcript-detail'> {props.serverData} </div>);
 }
 
 function AlertEditor(props) {
@@ -86,7 +86,7 @@ function Validation(props) {
   return(<div>
     <Header page='Validation' onClick={props.handleNav} serverData={props.serverData}/>
     <AlertPusher />
-    <TranscriptDetailed />
+    <TranscriptDetailed serverData={props.serverData['transcript']}/>
     <AlertEditor />
     </div>
   );
