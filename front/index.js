@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+var xhr = new XMLHttpRequest();
+
 class Map extends React.Component {
   render() {
     return (<div id = 'map-pane'> map goes here! </div>);
@@ -16,11 +18,11 @@ class TranscriptBox extends React.Component {
 class AlertStack extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {stack: [0]}
+    this.state = {stack: [0], serverData: props.serverData}
   }
 
   render() {
-    return (<div id = 'alert-stack'> alerts {this.state.stack} </div>);
+    return (<div id = 'alert-stack'> alerts {this.state.stack}, {this.state.serverData} </div>);
   }
 }
 
@@ -61,12 +63,13 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.handleNav = props.handleNav;
+    this.state = {serverData: props.serverData};
   }
 
   render() {return (<div>
     <Header page='Home' onClick={this.handleNav}/>
     <Map />
-    <AlertStack />
+    <AlertStack serverData={this.state.serverData} />
     <TranscriptBox />
     </div>
   );}
@@ -115,7 +118,7 @@ class Analytics extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentPage: 'Home', test: 0};
+    this.state = {currentPage: 'Home', test: 0, alertNum: 0};
     this.switchPage = this.switchPage.bind(this);
   }
 
@@ -132,12 +135,16 @@ class App extends React.Component {
   }
 
   updateTest() {
-  }
+    xhr.open("GET", "http://localhost:5000/update/", true);
+    xhr.send();
+    xhr.onreadystatechange = handleGetReq();
+
+   }
 
   render() {
     switch(this.state.currentPage) {
       case 'Home':
-        return (<Home handleNav={this.switchPage}/>);
+        return (<Home handleNav={this.switchPage} serverData={this.state.alertNum}/>);
         break;
       case 'Switchboard':
         return(<Switchboard handleNav={this.switchPage}/>);
@@ -153,6 +160,14 @@ class App extends React.Component {
         break;
     }
   }
+
+  handleGetReq() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        this.setState({alertNum: xhr.response});
+    }
 }
+}
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
