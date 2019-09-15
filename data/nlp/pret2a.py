@@ -9,18 +9,14 @@ for dep in ['p']:
         with open(f'../audio/{dep}{unit}.csv', 'r') as fi:
             lines = fi.readlines()
             for line in lines:
-                sp = line.split(',')
-                if len(sp) == 3:
-                    a, b, c = nlp.parse_sentance(sp[1], 39.051600, -77.174820)
+                sp = ''.join(line.split(',')[1:])
+                if len(sp) > 3:
+                    a, b, c = nlp.parse_sentance(sp, 39.051600, -77.174820)
                     if not (a is None and b is None and c is None):
-                        print(f'Emergency: {a}')
-                        print(f'Dispatch: {b}')
-                        print(f'Address: {c}')
-                        print(f'Time: {sp[0]}')
-                        print('\n\n')
+                        print(sp)
+                        print('\n')
 
-
-                        df = df.append({'Time': int(sp[0]),
+                        df = df.append({'Time': int(line.split(',')[0]),
                                         'Emergency': a,
                                         'Dispatch': b,
                                         'Address': c,

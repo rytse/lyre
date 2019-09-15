@@ -1,2 +1,9 @@
-Time,Emergency,Dispatch,Address,Alert
-45,earthquake,,"7919 Tuckerman Ln, Potomac, MD 20854, USA",There's an earthquake at the giant foods and there's more random texts that shouldn't affect anything
+,Time,Emergency,Dispatch,Address,Alert
+3,15,,helicopter,, 
+4,40,,helicopter,"1087 Seven Locks Rd, Rockville, MD 20854, USA", 
+0,45,fire,,,c
+5,45,fire,,"7919 Tuckerman Ln, Potomac, MD 20854, USA",h
+7,45,,backup,"1087 Seven Locks Rd, Rockville, MD 20854, USA", 
+1,55,injured,,,h
+6,60,fire,,"11430 Falls Rd, Rockville, MD 20854, USA",a
+2,65,,helicopter,,e
