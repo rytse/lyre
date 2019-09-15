@@ -19,18 +19,101 @@ class AlertStack extends React.Component {
   }
 }
 
-function Header() {
-  return (<div id='header'> header, nav </div>);
+function Header(props) {
+  return (<div id='header'> <h1> Command Center {props.page} </h1>
+  <button disabled={props.page=='Home'} onClick={props.onClick} value='Home'> Home </button>
+  <button disabled={props.page=='Switchboard'} onClick={props.onClick} value='Switchboard'> Switchboard </button>
+  <button disabled={props.page=='Validation'} onClick={props.onClick} value='Validation'> Validation </button>
+  <button disabled={props.page=='Analytics'} onClick={props.onClick} value='Analytics'> Analytics </button>
+  </div>);
 }
 
-function App() {
-  return (<div> <Header />
-      <Map />
-      <AlertStack />
-      <TranscriptBox />
-      hi
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleNav = props.handleNav;
+  }
+
+  render() {return (<div>
+    <Header page='Home' onClick={this.handleNav}/>
+    <Map />
+    <AlertStack />
+    <TranscriptBox />
     </div>
-  );
+  );}
+}
+
+class Switchboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleNav = props.handleNav;
+  }
+
+  render() {return(<div>
+    <Header page='Switchboard' onClick={this.handleNav}/>
+    </div>
+  );}
+}
+
+class Validation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleNav = props.handleNav;
+  }
+
+  render() {return(<div>
+    <Header page='Validation' onClick={this.handleNav}/>
+    </div>
+  );}
+}
+
+class Analytics extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleNav = props.handleNav;
+  }
+
+  render() {return(<div>
+    <Header page='Analytics' onClick={this.handleNav}/>
+    </div>
+  );}
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {currentPage: 'Home'};
+    this.switchPage = this.switchPage.bind(this);
+  }
+
+  switchPage(e) {
+    this.setState({currentPage: e.target.value});
+  }
+
+  render() {
+    switch(this.state.currentPage) {
+      case 'Home':
+        return (<Home handleNav={this.switchPage}/>);
+        break;
+      case 'Switchboard':
+        return(<Switchboard handleNav={this.switchPage}/>);
+        break;
+      case 'Validation':
+        return(<Validation handleNav={this.switchPage}/>);
+        break;
+      case 'Analytics':
+        return(<Analytics handleNav={this.switchPage}/>);
+        break;
+      default:
+        return (<Home handleNav={this.switchPage}/>);
+        break;
+    }
+    return (<div>
+    <Header page={this.state.currentPage} onClick={this.switchPage}/>
+    <AlertStack />
+    <TranscriptBox />
+    </div>
+  ); }
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));

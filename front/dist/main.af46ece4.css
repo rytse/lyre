@@ -17,6 +17,13 @@ p {
   font-size: 15;
 }
 
+h1 {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20;
+  line-height: 90%;
+}
+
 #root {
   background-color: #fdfdfd;
   font-family: 'Fira Sans', sans-serif;
@@ -61,6 +68,10 @@ p {
   left: 0;
   height: 10%;
   width: 100%;
+}
+
+#navbar {
+
 }
 
 

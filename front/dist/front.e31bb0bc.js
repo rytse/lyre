@@ -30705,15 +30705,209 @@ function (_React$Component3) {
   return AlertStack;
 }(_react.default.Component);
 
-function Header() {
+function Header(props) {
   return _react.default.createElement("div", {
     id: "header"
-  }, " header, nav ");
+  }, " ", _react.default.createElement("h1", null, " Command Center ", props.page, " "), _react.default.createElement("button", {
+    disabled: props.page == 'Home',
+    onClick: props.onClick,
+    value: "Home"
+  }, " Home "), _react.default.createElement("button", {
+    disabled: props.page == 'Switchboard',
+    onClick: props.onClick,
+    value: "Switchboard"
+  }, " Switchboard "), _react.default.createElement("button", {
+    disabled: props.page == 'Validation',
+    onClick: props.onClick,
+    value: "Validation"
+  }, " Validation "), _react.default.createElement("button", {
+    disabled: props.page == 'Analytics',
+    onClick: props.onClick,
+    value: "Analytics"
+  }, " Analytics "));
 }
 
-function App() {
-  return _react.default.createElement("div", null, " ", _react.default.createElement(Header, null), _react.default.createElement(Map, null), _react.default.createElement(AlertStack, null), _react.default.createElement(TranscriptBox, null), "hi");
-}
+var Home =
+/*#__PURE__*/
+function (_React$Component4) {
+  _inherits(Home, _React$Component4);
+
+  function Home(props) {
+    var _this;
+
+    _classCallCheck(this, Home);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+    _this.handleNav = props.handleNav;
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement(Header, {
+        page: "Home",
+        onClick: this.handleNav
+      }), _react.default.createElement(Map, null), _react.default.createElement(AlertStack, null), _react.default.createElement(TranscriptBox, null));
+    }
+  }]);
+
+  return Home;
+}(_react.default.Component);
+
+var Switchboard =
+/*#__PURE__*/
+function (_React$Component5) {
+  _inherits(Switchboard, _React$Component5);
+
+  function Switchboard(props) {
+    var _this2;
+
+    _classCallCheck(this, Switchboard);
+
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(Switchboard).call(this, props));
+    _this2.handleNav = props.handleNav;
+    return _this2;
+  }
+
+  _createClass(Switchboard, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement(Header, {
+        page: "Switchboard",
+        onClick: this.handleNav
+      }));
+    }
+  }]);
+
+  return Switchboard;
+}(_react.default.Component);
+
+var Validation =
+/*#__PURE__*/
+function (_React$Component6) {
+  _inherits(Validation, _React$Component6);
+
+  function Validation(props) {
+    var _this3;
+
+    _classCallCheck(this, Validation);
+
+    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(Validation).call(this, props));
+    _this3.handleNav = props.handleNav;
+    return _this3;
+  }
+
+  _createClass(Validation, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement(Header, {
+        page: "Validation",
+        onClick: this.handleNav
+      }));
+    }
+  }]);
+
+  return Validation;
+}(_react.default.Component);
+
+var Analytics =
+/*#__PURE__*/
+function (_React$Component7) {
+  _inherits(Analytics, _React$Component7);
+
+  function Analytics(props) {
+    var _this4;
+
+    _classCallCheck(this, Analytics);
+
+    _this4 = _possibleConstructorReturn(this, _getPrototypeOf(Analytics).call(this, props));
+    _this4.handleNav = props.handleNav;
+    return _this4;
+  }
+
+  _createClass(Analytics, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, _react.default.createElement(Header, {
+        page: "Analytics",
+        onClick: this.handleNav
+      }));
+    }
+  }]);
+
+  return Analytics;
+}(_react.default.Component);
+
+var App =
+/*#__PURE__*/
+function (_React$Component8) {
+  _inherits(App, _React$Component8);
+
+  function App(props) {
+    var _this5;
+
+    _classCallCheck(this, App);
+
+    _this5 = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this5.state = {
+      currentPage: 'Home'
+    };
+    _this5.switchPage = _this5.switchPage.bind(_assertThisInitialized(_this5));
+    return _this5;
+  }
+
+  _createClass(App, [{
+    key: "switchPage",
+    value: function switchPage(e) {
+      this.setState({
+        currentPage: e.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      switch (this.state.currentPage) {
+        case 'Home':
+          return _react.default.createElement(Home, {
+            handleNav: this.switchPage
+          });
+          break;
+
+        case 'Switchboard':
+          return _react.default.createElement(Switchboard, {
+            handleNav: this.switchPage
+          });
+          break;
+
+        case 'Validation':
+          return _react.default.createElement(Validation, {
+            handleNav: this.switchPage
+          });
+          break;
+
+        case 'Analytics':
+          return _react.default.createElement(Analytics, {
+            handleNav: this.switchPage
+          });
+          break;
+
+        default:
+          return _react.default.createElement(Home, {
+            handleNav: this.switchPage
+          });
+          break;
+      }
+
+      return _react.default.createElement("div", null, _react.default.createElement(Header, {
+        page: this.state.currentPage,
+        onClick: this.switchPage
+      }), _react.default.createElement(AlertStack, null), _react.default.createElement(TranscriptBox, null));
+    }
+  }]);
+
+  return App;
+}(_react.default.Component);
 
 _reactDom.default.render(_react.default.createElement(App, null), document.getElementById('root'));
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
