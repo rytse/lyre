@@ -1,0 +1,38 @@
+{
+  "name": "lyre",
+  "version": "0.1.0",
+  "description": "Emergency response communications system interoperability and dispatch center",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rytse/lyre.git"
+  },
+  "author": "Ryan Tse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rytse/lyre/issues"
+  },
+  "homepage": "https://github.com/rytse/lyre#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "history": "^4.10.1",
+    "react-router-dom": "^5.0.1"
+  }
+}
