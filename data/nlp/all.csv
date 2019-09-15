@@ -1,2 +1,5 @@
-Time,Emergency,Dispatch,Address,Alert
-45,earthquake,,"7919 Tuckerman Ln, Potomac, MD 20854, USA",There's an earthquake at the giant foods and there's more random texts that shouldn't affect anything
+,Time,Emergency,Dispatch,Address,Alert
+0,15,,backup,39.0404304~-77.1554929, 
+1,20,drowning,,39.0406944~-77.1558823,o
+2,25,fire,,39.0413309~-77.1574207,v
+3,40,,backup,,e
