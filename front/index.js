@@ -25,7 +25,8 @@ function Map(props) {
 }
 
 function TranscriptBox(props) {
-  return (<div id = 'transcript-box'> <h2> Transcript </h2> </div>);
+  return (<div id = 'transcript-box'> <h2> Transcript </h2>
+    <p> {props.serverData} </p> </div>);
 }
 
 function Alert(props) {
@@ -59,7 +60,6 @@ function Header(props) {
   <button disabled={props.page=='Home'} onClick={props.onClick} value='Home'> Home </button>
   <button disabled={props.page=='Switchboard'} onClick={props.onClick} value='Switchboard'> Switchboard </button>
   <button disabled={props.page=='Validation'} onClick={props.onClick} value='Validation'> Validation </button>
-  <button disabled={props.page=='Analytics'} onClick={props.onClick} value='Analytics'> Analytics </button>
   </div>);
 }
 
@@ -69,7 +69,7 @@ function Home(props) {
     <Header page='Home' onClick={props.handleNav}/>
     <Map fire={props.serverData['fire_locs']} pol={props.serverData['police_locs']} guard={props.serverData['guard_locs']} dis={props.serverData['disasters']}/>
     <AlertStack serverData={props.serverData['alerts']} handleDispatch={props.handleDispatch} display={props.display['alerts']} />
-    <TranscriptBox />
+    <TranscriptBox serverData={props.serverData['transcript']}/>
     </div>
   );
 }
@@ -88,13 +88,6 @@ function Validation(props) {
     <AlertPusher />
     <TranscriptDetailed />
     <AlertEditor />
-    </div>
-  );
-}
-
-function Analytics(props) {
-  return(<div>
-    <Header page='Analytics' onClick={props.handleNav} serverData={props.serverData}/>
     </div>
   );
 }
@@ -131,7 +124,7 @@ class App extends React.Component {
         return response.json();
       })
       .then(function(myJson) {
-        console.log(myJson);
+        // console.log(myJson);
         // console.log(typeof(setState));
         var tempData = Object.assign({}, sDisp);
         var i;
@@ -165,9 +158,6 @@ class App extends React.Component {
         break;
       case 'Validation':
         return(<Validation handleNav={this.switchPage} serverData={this.state.serverData}/>);
-        break;
-      case 'Analytics':
-        return(<Analytics handleNav={this.switchPage} serverData={this.state.serverData}/>);
         break;
       default:
         return (<Home handleNav={this.switchPage} serverData={this.state.serverData}/>);
