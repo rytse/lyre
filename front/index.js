@@ -131,7 +131,7 @@ class App extends React.Component {
         return response.json();
       })
       .then(function(myJson) {
-        // console.log(myJson);
+        console.log(myJson);
         // console.log(typeof(setState));
         var tempData = Object.assign({}, sDisp);
         var i;
@@ -143,7 +143,7 @@ class App extends React.Component {
         setState({serverData: Object.assign({}, myJson)});
       })
       // .catch(function() {console.log("Error")});
-      // console.log(this.state.serverData);
+      // console.log(this.state.serverData['alerts']);
    }
 
    dispatch(e) {

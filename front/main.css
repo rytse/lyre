@@ -21,7 +21,8 @@ h1 {
   font-family: 'Fira Sans', sans-serif;
   font-weight: 300;
   font-size: 22;
-  line-height: 90%;
+  line-height: 70%;
+  color: #ffffff;
 }
 
 h2 {
@@ -37,7 +38,9 @@ div {
 }
 
 button {
-
+  border: none;
+  background-color: #b0eaf0;
+  font-size: 14;
 }
 
 ul {
@@ -70,11 +73,6 @@ img {
 #gu3 {left: 1%; top: 46%}
 #gu4 {right: 18%; bottom: 32%}
 #gu5 {left: 1%; top: 1%}
-#d1 {}
-#d2 {}
-#d3 {}
-#d4 {}
-#d5 {}
 
 #root {
   background-color: #fdfdfd;
@@ -88,8 +86,8 @@ img {
 
 #alert {
   width:100%;
-  border: 1px solid red;
-  border-radius: 4px;
+  border: 2px solid red;
+  border-radius: 5px;
   left: 0;
 }
 
@@ -165,7 +163,7 @@ img {
 }
 
 #header {
-  background-color: #ffadad;
+  background-color: #a0adad;
   position: fixed;
   top: 0;
   left: 0;
