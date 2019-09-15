@@ -120,7 +120,6 @@ class App extends React.Component {
     super(props);
     this.state = {currentPage: 'Home', test: 0, alertNum: 0};
     this.switchPage = this.switchPage.bind(this);
-    this.handleGetReq = this.handleGetReq.bind(this);
   }
 
   switchPage(e) {
@@ -137,14 +136,13 @@ class App extends React.Component {
 
   updateTest() {
     fetch('http://localhost:5000/update/')
-          .then(function(response) {
-                  return response.json();
-
-          })
-          .then(function(myJson) {
-                  console.log(JSON.stringify(myJson));
-
-          });
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      })
+      .catch(function() {console.log("Error")});
    }
 
   render() {
@@ -166,14 +164,6 @@ class App extends React.Component {
         break;
     }
   }
-
-  handleGetReq() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        this.setState({alertNum: xhr.response});
-    }
-  }
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
